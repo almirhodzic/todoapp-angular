@@ -1,0 +1,13 @@
+<div (click)="toggleTodo()"
+     class="flex items-center todo-element" [ngClass]="{'closed':todo.done,'open':!todo.done}">
+
+  <div class="flex items-center">
+    <ion-icon name="remove-outline" class="action-button toggle text-gray-200" *ngIf="!todo.done"></ion-icon>
+    <ion-icon name="checkmark-sharp" class="action-button toggle text-white" *ngIf="todo.done"></ion-icon>{{
+    todo.title }}
+  </div>
+
+  <div class="flex items-center">
+      <ion-icon name="close-outline" class="text-2xl" (click)="deleteTodo()"></ion-icon>
+  </div>
+</div>

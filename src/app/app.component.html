@@ -1,0 +1,29 @@
+<div class="mt-2 bg-slate-500 text-white m-auto rounded-xl overflow-hidden">
+  <div class="text-center py-2">
+    <h1 class="text-3xl">{{ appTitle }}</h1>
+    <p>erledigt: {{ countClosedTodos() }} | offen: {{ countOpenTodos() }}</p>
+  </div>
+  <div class="p-4 flex justify-between">
+    <input
+      [(ngModel)]="title"
+      placeholder="Title"
+      type="text"
+      class="text-gray-700 w-2/3 border-0 rounded-l-md"
+      (keyup)="setTodo($event)"
+      (keydown.enter)="onStoreTodo()"
+    />
+    <button
+      class="py-2 w-1/3 bg-blue-500 rounded-r-md"
+      (click)="onStoreTodo()">Add Todos
+    </button>
+  </div>
+<div class="transition-opacity ease-in duration-700 opacity-100">
+  <div *ngFor="let todo of todos">
+    <app-todo [todo]="todo"
+              (todoIndex)="onToggleTodo($event)"
+              (deleteIndex)="onDeleteTodo($event)"
+    ></app-todo>
+  </div>
+</div>
+
+</div>
