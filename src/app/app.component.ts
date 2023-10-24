@@ -40,7 +40,7 @@ export class AppComponent implements OnInit {
 
   onStoreTodo(): void {
     this.todoService.storeTodo({ title: this.newTodo, done: false }).subscribe(
-      (response) => {this.onGetTodos(), this.handleClear()},
+      (response) => {this.onGetTodos(), this.handleClear(), this.soundSuccess()},
       (error: any) => console.log(error),
       () => ''
     );
@@ -57,7 +57,7 @@ export class AppComponent implements OnInit {
 
   onToggleTodo(id: number): void {
     this.todoService.toggleTodo(id).subscribe(
-      (response) => {this.onGetTodos(), this.handleClear()},
+      (response) => {this.onGetTodos(), this.handleClear(), this.soundToggle()},
       (error: any) => console.log(error),
       () => ''
     );
@@ -65,22 +65,22 @@ export class AppComponent implements OnInit {
 
   onDeleteTodo(id: number): void {
     this.todoService.deleteTodo(id).subscribe(
-      (response) => {this.onGetTodos(), this.handleClear()},
+      (response) => {this.onGetTodos(), this.soundDelete()},
       (error: any) => console.log(error),
       () => ''
     );
   }
 
-  soundSuccess() {
-    let audio: HTMLAudioElement = new Audio('../assets/sounds/delete2.wav');
+  soundToggle() {
+    let audio: HTMLAudioElement = new Audio('../assets/sounds/toggle.wav');
     audio.play().then();
   }
   soundDelete() {
-    let audio: HTMLAudioElement = new Audio('../assets/sounds/done.wav');
+    let audio: HTMLAudioElement = new Audio('../assets/sounds/recycle.wav');
     audio.play().then();
   }
-  soundToggle() {
-    let audio: HTMLAudioElement = new Audio('../assets/sounds/toast_sound.mp3');
+  soundSuccess() {
+    let audio: HTMLAudioElement = new Audio('../assets/sounds/success.wav');
     audio.play().then();
   }
   handleClear() {
