@@ -15,6 +15,12 @@
     font-family: 'Barlow', sans-serif;
   }
 
+  .h-full {
+    height: 100vh;
+    visibility: visible;
+    overflow-y: overlay;
+  }
+
   input::placeholder {
     color: lightgray;
   }
